@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"  # 10% del tráfico va a la versión canary
+spec:
+  rules:
+  - host: tu-dominio.com  # Reemplaza con tu dominio o IP
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: stable-service  # El 90% del tráfico irá aquí
+            port:
+              number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: canary-service  # El 10% del tráfico irá aquí
+            port:
+              number: 80

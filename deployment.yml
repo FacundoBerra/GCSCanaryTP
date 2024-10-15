@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-stable
+  name: stable-deployment
+  labels:
+    app: stable
 spec:
-  replicas: 3
+  replicas: 3  # Número de réplicas
   selector:
     matchLabels:
-      app: my-app
-      version: stable
+      app: stable
   template:
     metadata:
       labels:
-        app: my-app
-        version: stable
+        app: stable
     spec:
       containers:
-      - name: app
-        image: my-app:v1  # La imagen de tu aplicación estable
+      - name: stable
+        image: tu-imagen-stable:latest  # Reemplaza con tu imagen
         ports:
-        - containerPort: 80
+        - containerPort: 80  # Puerto expuesto
