@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: stable
-        image: tu-imagen-stable:latest  # Reemplaza con tu imagen
+        image: nicoxmelia/imagen_estable:latest  # Reemplaza con tu imagen
         ports:
         - containerPort: 80  # Puerto expuesto
