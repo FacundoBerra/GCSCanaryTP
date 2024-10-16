@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/canary-weight: "10"  # 10% del tráfico va a la versión canary
 spec:
   rules:
-  - host: tu-dominio.com  # Reemplaza con tu dominio o IP
+  - host: https:localhost::8080  # Reemplaza con tu dominio o IP
     http:
       paths:
       - path: /
@@ -24,3 +24,4 @@ spec:
             name: canary-service  # El 10% del tráfico irá aquí
             port:
               number: 80
+              

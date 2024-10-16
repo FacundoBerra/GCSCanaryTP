@@ -1,12 +1,21 @@
-apiVersion: v1
-kind: Service
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: canary-service
-spec:
-  selector:
+  name: canary-deployment
+  labels:
     app: canary
-  ports:
-    - protocol: TCP
-      port: 80  # Puerto del servicio
-      targetPort: 80  # Puerto del contenedor
-  type: ClusterIP  # Tipo de servicio
+spec:
+  replicas: 1  # Número de réplicas para la versión canary
+  selector:
+    matchLabels:
+      app: canary
+  template:
+    metadata:
+      labels:
+        app: canary
+    spec:
+      containers:
+      - name: canary
+        image: tu-imagen-canary:latest  # Reemplaza con tu imagen canary
+        ports:
+        - containerPort: 80  # Puerto expuesto

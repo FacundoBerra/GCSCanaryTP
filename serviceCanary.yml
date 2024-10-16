@@ -4,8 +4,7 @@ metadata:
   name: canary-service
 spec:
   selector:
-    app: my-app
-    version: canary
+    app: canary
   ports:
     - protocol: TCP
       port: 80

@@ -7,6 +7,5 @@ spec:
     app: stable
   ports:
     - protocol: TCP
-      port: 80  # Puerto del servicio
-      targetPort: 80  # Puerto del contenedor
-  type: ClusterIP  # Tipo de servicio
+      port: 80
+      targetPort: 80
