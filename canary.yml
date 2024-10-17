@@ -26,6 +26,6 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       containers:
       - name: canary
-        image: facundoberra/canarioimagen:latest  # Reemplaza con tu imagen canary
+        image: facundoberra/canarioimagen:latest  #imagen canary
         ports:
         - containerPort: 80
