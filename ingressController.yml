@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/canary-weight: "10"  # 10% del tráfico va a la versión canary
 spec:
   rules:
-  - host: my-app.local  # Reemplaza con tu dominio o IP
+  - host: my-app.local  # IP propia de minikube
     http:
       paths:
       - path: /
