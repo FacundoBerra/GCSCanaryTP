@@ -5,7 +5,7 @@ metadata:
   labels:
     app: stable
 spec:
-  replicas: 3  # Número de réplicas
+  replicas: 3
   selector:
     matchLabels:
       app: stable
@@ -14,8 +14,18 @@ spec:
       labels:
         app: stable
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - canary
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: stable
-        image: tu-imagen-stable:latest  # Reemplaza con tu imagen
+        image: tu-imagen-estable:latest  # Reemplaza con tu imagen estable
         ports:
-        - containerPort: 80  # Puerto expuesto
+        - containerPort: 80

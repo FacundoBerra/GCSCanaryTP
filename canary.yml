@@ -5,7 +5,7 @@ metadata:
   labels:
     app: canary
 spec:
-  replicas: 1  # Número de réplicas para la versión canary
+  replicas: 1
   selector:
     matchLabels:
       app: canary
@@ -14,8 +14,18 @@ spec:
       labels:
         app: canary
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - stable
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: canary
-        image: tu-imagen-canary:latest  # Reemplaza con tu imagen canary
+        image: facundoberra/canarioimagen:latest  # Reemplaza con tu imagen canary
         ports:
-        - containerPort: 80  # Puerto expuesto
+        - containerPort: 80
