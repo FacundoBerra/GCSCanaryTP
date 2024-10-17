@@ -4,7 +4,8 @@ metadata:
   name: app-ingress
   annotations:
     nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-by-header: "Canary" # agregamos el canary
+    nginx.ingress.kubernetes.io/canary-by-header: "Canary"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "always"
     nginx.ingress.kubernetes.io/canary-weight: "10"  # 10% del tráfico va a la versión canary
 spec:
   rules:
@@ -25,4 +26,3 @@ spec:
             name: canary-service  # El 10% del tráfico irá aquí
             port:
               number: 80
-              

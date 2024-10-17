@@ -14,18 +14,8 @@ spec:
       labels:
         app: stable
     spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - labelSelector:
-                matchExpressions:
-                  - key: app
-                    operator: In
-                    values:
-                      - canary
-              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: stable
-        image: tu-imagen-estable:latest  # Reemplaza con tu imagen estable
+        image: facundoberra/stableimagen:latest  # Imagen Estable
         ports:
         - containerPort: 80
